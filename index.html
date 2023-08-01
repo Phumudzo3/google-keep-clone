@@ -114,9 +114,9 @@
         
     </div>
      <div class="right-sidebar">
-        <div class="note-box ">
+        <div class="note-box inactive-form">
            
-            <input type="text" placeholder="Take a note..."/>
+            <input type="text" placeholder="Take a note..." class="note-text1" />
             <div class="search-icon">
                 <span class="material-icons">
 check_box
@@ -133,13 +133,14 @@ check_box
             <br> <br>
            
         </div>
-        <div class="modal  ">
+
+        <div class="modal ">
             <div class="modal-content">
             
                 <div class=" active-form ">
-                       
-                    <input type="text" class="note-class" placeholder="title">
-                    <input type="text" placeholder="Take a note...">
+                       <form id="form">
+                    <input type="text" class="note-title" placeholder="title" >
+                    <input type="text" class="note-text" placeholder="Take a note...">
                     
                     <div class="search-icon1">
                     
@@ -167,11 +168,11 @@ check_box
                                                      <span class="material-icons">
                                                          redo
                                                          </span>
-                                                         <span class="btn">Close</span>
+                                                         <span class="btn"><button>Close</button></span>
                                      
                      </div>
                    
-                    
+                    </form>
                  </div>
             </div>
             
@@ -180,13 +181,16 @@ check_box
         </div><br>
         
         <div class="note">
-            <span class="material-icons check-circle">
-                check_circle
-                </span>
+          
             <div class=" active-form2 ">
-           
-                <input type="text" class="note-class" placeholder="title">
-                <input type="text" placeholder="Take a note...">
+                <span class="material-icons check-circle">
+                    check_circle
+                    </span>
+                    <br>
+           <div class="title">Title</div>
+           <br>
+           <div class="text">Text</div>
+               
                 
                 <div class="search-icon11">
                 
@@ -222,16 +226,11 @@ check_box
              
              </div>
         </div>
-        <article>
-
-            <section>
-<span class="material-icons">
-                lightbulb_outline
-                </span> 
-                <span>Notes you add appear here</span>
-            </section>
-            
-        </article>
+      
     </div>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js" referrerpolicy="no-referrer"></script>
+    <script src="index.js"></script>
+    </body>
+
+
 </html>

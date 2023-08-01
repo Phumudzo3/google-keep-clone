@@ -180,9 +180,7 @@ width: 100px ;
 
 }
 
-.sidebar-item span{
-  
-}
+
 
 .hover:hover{
     background: #f1f2f3f4;
@@ -236,7 +234,7 @@ tooltip span:hover{
 .right-sidebar{
     width: 80%;
     height: 90vh;
-   
+   position: static;
     float: left;
 
     }
@@ -267,6 +265,7 @@ padding-left: 10px;
     height: 150px;
     width: 535px;
     left: 240px;
+   margin-top: 50px;
 
     background-color: #fff;
 border: 2px solid  #e0e0e0;
@@ -335,6 +334,7 @@ padding: 10px 8px 0px 8px;
 }
 .active-form2  {
     background: palegreen;
+    margin-top: 5px;
     height: 150px;
     width: 250px;
     left: 240px;
@@ -361,7 +361,11 @@ margin-left: 10px;
     outline-width: 0;
 }
 .note{
-    margin-top: 150px;
+    margin-top: 80px;
+    flex-wrap: wrap;
+   padding: 0px 1px;
+    position: relative;
+    bottom: 80px;
 }
 .active-form2 .search-icon11{
     position: relative;
@@ -387,7 +391,8 @@ article{
 }
 .check-circle{
     position: absolute;
-   top:356px;
+   top:0px;
+   left: -3px;
 }
 article span{
   display: block;
@@ -403,7 +408,7 @@ color: #5f6368;
  section .material-icons{
     font-size: 200px
  }
- .modal{
+ modal{
     position: fixed;
     top: 0;
     left:0;
@@ -413,7 +418,7 @@ color: #5f6368;
     isibility: hidden;
 }
 
- .modal-content{
+ modal-content{
     position: relative;
     top: 40%;
     left: 70%;
@@ -425,7 +430,9 @@ color: #5f6368;
     .open-model{
         visibility: visible;
     }
-    
+.active-form{
+   display:none
+    }
     
     
     
