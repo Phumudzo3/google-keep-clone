@@ -22,7 +22,7 @@ addEventListeners(){
     document.body.addEventListener("click",(event) => {
         this.handleFormClick(event);
     })
-    this.$form.addEventListeners("click",(event) => {
+    this.$form.addEventListener("submit",(event) => {
         event.preventDefault();
         const title =this.$noteTitle.value;
 const text=this.$noteText.value;
