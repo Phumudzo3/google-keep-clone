@@ -7,7 +7,8 @@ class Note{
 }
 class App{
     constructor(){
-        this.notes = [];
+
+        this.notes = [new Note(1,"test title","test text")];
    
     this.$activeform = document.querySelector(".active-form");
     this.$inactiveform = document.querySelector(".inactive-form");
@@ -17,6 +18,7 @@ class App{
     this.$notes = document.querySelector(".note");
     this.$form = document.querySelector("#form");
 this.addEventListeners();
+this.displayNotes();
 }
 addEventListeners(){
     document.body.addEventListener("click",(event) => {
