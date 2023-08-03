@@ -7,9 +7,9 @@ class Note{
 }
 class App{
     constructor(){
-this.$selectedNoteId="";
-        //this.notes = [new Note("abc1","test title","test text")];
-        this.notes = [];
+
+        this.notes = [new Note("abc2","test title","test text")];
+   
     this.$activeform = document.querySelector(".active-form");
     this.$inactiveform = document.querySelector(".inactive-form");
     this.$noteTitle = document.querySelector(".note-title");
@@ -17,21 +17,12 @@ this.$selectedNoteId="";
     this.$noteText1 = document.querySelector(".note-text1");
     this.$notes = document.querySelector(".note");
     this.$form = document.querySelector("#form");
-    this.$form = document.querySelector("#form");
-    this.$modal = document.querySelector(".modal");
-    this.$modalForm=document.querySelector(".modal-form");
-    this.$modalTitle=document.querySelector(".modal-title");
-    this.$modalText=document.querySelector(".modal-text");
-
 this.addEventListeners();
 this.displayNotes();
 }
 addEventListeners(){
     document.body.addEventListener("click",(event) => {
         this.handleFormClick(event);
-       // this.closeModal(event);
-      //  this.openModal(event);
-        this.handleArchiving(event);
     })
     this.$form.addEventListener("submit",(event) => {
         event.preventDefault();
@@ -41,8 +32,6 @@ this.addNote({title,text});
     this.closeActiveForm();
     })
 }
-
-
    handleFormClick(event) {
 const isActiveFormClickOn=this.$activeform.contains(event.target);
 const isInactiveFormClickOn=this.$inactiveform.contains(event.target);
@@ -71,42 +60,6 @@ openActiveForm(){
     this.$noteText.value= "";
     this.$noteTitle.value="";
    }
-
-   //openModal(event){
-   // const $selectedNote=event.target.closest(".note");
-   
-   // if ($selectedNote && !event.target.closest(".archive")){
-     //   this.$selectedNoteId =$selectedNote.id;
-     //   this.$modalTitle.value =$selectedNote.children[1].innerHTML;
-      //  this.$modalText$.value=$selectedNote.children[2].innerHTML;
-     //   this.$modal.classList.add("open-model");
-   // }else {
-   //     return;
-   // }
-
- //  }
-
-   //closeModal(event){
-   // const isModalFormClickedOn=this.$modalForm.contains(event.target);
-//if (!isModalFormClickedOn && this.$modal.classList.contains("open-modal")){
-     //   this.editNote(this.$selectedNoteId,{title: this.$modalTitle.value,text : this.$modalText.value})
-     //   this.$modal.classList.remove("open-model");
-   // }
-
-  // }
-   
-handleArchiving(event){
-    const $selectedNote=event.target.closest(".note");
-    if ($selectedNote ){
-        this.$selectedNoteId =$selectedNote.id;
-       this.delete(this.$selectedNoteId);
-        
-    }else {
-        return;
-    }
-
-   }
-
     addNote({title,text}){
         //generate id -cuid
         if(text !=""){
@@ -129,37 +82,34 @@ return note;
 });
 
 }
-delete(id){
-    this.notes=this.notes.filter((note) => note.id != id);
-    this.displayNotes();
-}
-
 handleMouseOverNote(element){
-const $note=document.querySelector("#"+element.id);
-const $checkNote=document.querySelector(".check-circle");
-const $noteFooter=document.querySelector(".search-icon11");
-$checkNote.style.visibility="visible";
-$noteFooter.style.visibility="visible";
-
-
-}
-handleMouseOutNote(element){
     const $note=document.querySelector("#"+element.id);
     const $checkNote=document.querySelector(".check-circle");
     const $noteFooter=document.querySelector(".search-icon11");
-    $checkNote.style.visibility="hidden";
-    $noteFooter.style.visibility="hidden";
+    $checkNote.style.visibility="visible";
+    $noteFooter.style.visibility="visible";
     
+    
+    }
+    handleMouseOutNote(element){
+        const $note=document.querySelector("#"+element.id);
+        const $checkNote=document.querySelector(".check-circle");
+        const $noteFooter=document.querySelector(".search-icon11");
+        $checkNote.style.visibility="hidden";
+        $noteFooter.style.visibility="hidden";
+        
+    }
+delete(id){
+    this.notes=this.notes.filter((note) => note.id != id);
 }
 displayNotes(){
     this.$notes.innerHTML = this.notes.map((note) =>
-    //onmouseover="app.handleMouseOverNote(this)" onmouseout="app.handleMouseOutNote(this)"
     `
-    <div class="note"  id="${note.id}" onmouseover="app.handleMouseOverNote(this)" onmouseout="app.handleMouseOutNote(this)" >
+    <div class="note"  id="${note.id}"  >
     <span class="material-icons check-circle">
         check_circle
         </span>
-    <div class=" active-form2 archive   ">
+    <div class=" active-form2 ">
    <div class="title"> ${note.title}</div>
    <div class="text"> ${note.text}</div>
        
@@ -178,7 +128,7 @@ displayNotes(){
                          <span class="material-icons">
                              image
                              </span>
-                             <span class="material-icons hover ">
+                             <span class="material-icons hover">
                                  archive
                                  </span>
                                  <span class="material-icons">
