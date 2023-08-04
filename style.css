@@ -141,14 +141,16 @@ width: 20%;
   margin-top: 10px;
   margin-left: 0px;
   flex-wrap: wrap;
- width: 70%;
-
+  overflow-x: hidden;
+ width: 80px;
+ 
+ display:flex;
+transition: 0.8s;
+    justify-content:space-between  ;
 }
-
-
 .sidebar-item{
     display: flex;
-    margin-left: px;
+    justify-content:space-between  ;
     align-items: center;
     padding: 7px 0px 7px 10px;
     width:300px;
@@ -158,7 +160,6 @@ width: 20%;
     border-radius: 0px 50px 50px  0px;
 }
 .active{
-    
     width:300px;
     background-color: #feefc3;
     border-radius: 0px 50px 50px  0px;
@@ -200,8 +201,7 @@ width: 20%;
 }
 .tooltip-text{
     position:absolute;
-    left: 0;
-    padding-left: 50px;
+    left: -9px;
    top: 40px;
     font-size:0.8rem;
     color: white;
@@ -212,12 +212,16 @@ width: 20%;
     visibility: hidden;
     cursor: pointer;
     z-index: 1;
+    text-align: center;
+    width:300%;
 }
+    
 .tooltip:hover .tooltip-text{
     visibility: visible;
      background:#000000;
-     width: fit-content;
-}
+    width:200%;
+    } 
+
 tooltip span:hover{
     background-color: rgba(60,64,67,.08);
     outline: none;
@@ -241,7 +245,7 @@ tooltip span:hover{
 }
 
 .note-box input{
-    height: 46px;
+    height: 48px;
     width: 535px;
     background-color: #fff;
 border: 2px solid  #e0e0e0;
@@ -286,33 +290,29 @@ margin-left: 270px;
 
 .search-icon{
     position: absolute;
-    top:115px;
-    right: 290px;
-   padding: 0px 10px 10px 20px;
+    top:108px;
+    right: 300px;
+    justify-content: space-between ;
     align-items: center;
     display: flex;
+width: 180px;
+height: 40px;
 
 }
-.search-icon
-.zz1:hover{
-    width: 100px;
-    background: peru;
-    
-}
+
 
 .search-icon .material-icons{
 display: flex;
-width: 40px;
-height: 40px;
-padding-left: 40px;
+align-items: center;
+font-size: 20px;
+height: 48px;
 }
 .search-icon1{
     position: relative;
- 
  width: auto;
     top:20px;
-    right: 10px;
-    padding-right:300px;
+    right: 3px;
+    padding-right:260px;
    display: flex;
     align-items: center;
 }
@@ -325,8 +325,13 @@ padding-left: 40px;
   width: 60px;
 padding: 10px 8px 0px 8px;
   height: 30px;
-  border-radius: 10%;
+ 
 
+}
+.closebtn{
+    border: none;
+    background: white;
+    font-weight: 600;
 }
 .search-icon1 .material-icons{
     font-size: 20px;
@@ -342,7 +347,7 @@ padding: 10px 8px 0px 8px;
 
 }
 .active-form2  {
-    background: palegreen;
+   
     margin-top: 5px;
     height: 150px;
     width: 250px;

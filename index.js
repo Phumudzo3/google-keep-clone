@@ -8,6 +8,7 @@ class Note{
 class App{
     constructor(){
 this.$selectedNoteId="";
+this.miniSideBar=true;
         //this.notes = [new Note("abc1","test title","test text")];
         this.notes = [];
     this.$activeform = document.querySelector(".active-form");
@@ -22,6 +23,7 @@ this.$selectedNoteId="";
     this.$modalForm=document.querySelector(".modal-form");
     this.$modalTitle=document.querySelector(".modal-title");
     this.$modalText=document.querySelector(".modal-text");
+this.$sidebar=document.querySelector(".left");
 
 this.addEventListeners();
 this.displayNotes();
@@ -39,6 +41,14 @@ addEventListeners(){
 const text=this.$noteText.value;
 this.addNote({title,text});
     this.closeActiveForm();
+    })
+
+
+    this.$sidebar.addEventListener("mouse",(event) =>{
+        this.handleToggleSideBar();
+    })
+    this.$sidebar.addEventListener("mouseout",(event) =>{
+        this.handleToggleSideBar();
     })
 }
 
@@ -105,6 +115,17 @@ handleArchiving(event){
         return;
     }
 
+   }
+   handleToggleSideBar(){
+if(this.miniSideBar){
+this.$sidebar.style.width="250px";
+this.miniSideBar=false;
+}
+else
+{
+    this.$sidebar.style.width="80px"
+    this.miniSideBar=true;
+}
    }
 
     addNote({title,text}){
