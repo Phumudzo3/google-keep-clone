@@ -102,9 +102,17 @@ color: #5f6368;
    
 }
 .auth-user{
+
     cursor: pointer;
-    
+    display:inline-block;
+    ;
 }
+.logout{
+    display: flex;
+  justify-content: center;
+}
+
+    
 
  .p1 span{
   margin-left: 20px;
