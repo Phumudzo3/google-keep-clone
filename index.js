@@ -27,10 +27,32 @@ this.miniSideBar=true;
     this.$modalTitle=document.querySelector(".modal-title");
     this.$modalText=document.querySelector(".modal-text");
 this.$sidebar=document.querySelector(".left");
-this.$logOutButton =document.querySelector(".logout")
+this.$logOutButton =document.querySelector(".logout");
 this.addEventListeners();
 this.displayNotes();
 
+}
+handleLogOut(){
+    firebase.auth().signOut().then(() => {
+  // Sign-out successful.
+    this.redictTOAuth();
+}).catch((error) => {
+  console.log("error accrred",error);
+});
+}
+handleAuth(){
+    firebase.auth().onAuthStateChanged((user) => {
+        
+        if (user) {
+
+          console.log(user);
+          this.userId=user;
+          this.$authUserText.innerHTML=user.displayName;
+         this.redirectToApp();
+       } else {
+        this.redictTOAuth();
+    }
+     });
 }
 
 
@@ -59,9 +81,7 @@ this.addNote({title,text});
         this.handleToggleSideBar();
     })
 }
-
-
-   handleFormClick(event) {
+handleFormClick(event) {
 const isActiveFormClickOn=this.$activeform.contains(event.target);
 const isInactiveFormClickOn=this.$inactiveform.contains(event.target);
 const title =this.$noteTitle.value;

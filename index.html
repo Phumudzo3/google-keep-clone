@@ -266,33 +266,12 @@ const db = firebase.firestore();
     this.$selectedNoteId="";
     this.userId="";
     this.handleAuth();
-    this.handleLogOut();
 
+    
 
 }
 
-handleLogOut(){
-    firebase.auth().signOut().then(() => {
-  // Sign-out successful.
-    this.redictTOAuth();
-}).catch((error) => {
-  console.log("error accrred",error);
-});
-}
-handleAuth(){
-    firebase.auth().onAuthStateChanged((user) => {
-        
-        if (user) {
 
-          console.log(user);
-          this.userId=user;
-          this.$authUserText.innerHTML=user.displayName;
-         this.redirectToApp();
-       } else {
-        this.redictTOAuth();
-    }
-     });
-}
 
 redictTOAuth(){
  
