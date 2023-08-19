@@ -1,13 +1,16 @@
+
 class Note{
     constructor(id,title,text){
         this.id=id;
         this.title=title;
-        this.text=text
+        this.text=text;
+         
     }
 }
 class App{
     constructor(){
-this.$selectedNoteId="";
+
+
 this.miniSideBar=true;
         //this.notes = [new Note("abc1","test title","test text")];
         this.notes = [];
@@ -24,10 +27,13 @@ this.miniSideBar=true;
     this.$modalTitle=document.querySelector(".modal-title");
     this.$modalText=document.querySelector(".modal-text");
 this.$sidebar=document.querySelector(".left");
-
+this.$logOutButton =document.querySelector(".logout")
 this.addEventListeners();
 this.displayNotes();
+
 }
+
+
 addEventListeners(){
     document.body.addEventListener("click",(event) => {
         this.handleFormClick(event);
@@ -42,7 +48,9 @@ const text=this.$noteText.value;
 this.addNote({title,text});
     this.closeActiveForm();
     })
-
+    this.$logOutButton.addEventListener("click",(event) =>{
+        this.handleLogOut();
+    });
 
     this.$sidebar.addEventListener("mouse",(event) =>{
         this.handleToggleSideBar();
@@ -131,13 +139,58 @@ else
     addNote({title,text}){
         //generate id -cuid
         if(text !=""){
-            const newNote= new Note(cuid(),title,text);
+            const newNote= { id:cuid(),title,text};
             this.notes =[...this.notes,newNote];
             this.displayNotes();
+            this.render();
         }
       
     }
+    fetchNoteFormDb(){
+        var docRef = db.collection("users").doc("this.userId");
+   docRef.get().then((doc) => {
+      if (doc.exists) {
+           console.log("Document data:", doc.data().notes);
+           this.notes =doc.data().notes;
+           this.displayNote();
+      } else {
+            //doc.data() will be undefined in this case
+         console.log("No such document!");
+         db.collection("users").doc(this.userId).set({
+            notes : []
+             
+         })
+         .then(() => {
+             console.log("user successfully written!");
+         })
+         .catch((error) => {
+             console.error("Error writing document: ", error);
+         });
+      }
+   }).catch((error) => {
+   //    cons ole.log("Error getting document:", error);
+   });    
+       }
 
+    saveNotes(){
+        const db = firebase.firestore();
+        console.log(db);  
+ //Add a new document in collection "cities"
+db.collection("users").doc(this.userId).set({
+   notes : this.notes
+    
+})
+.then(() => {
+    console.log("Document successfully written!");
+})
+.catch((error) => {
+    console.error("Error writing document: ", error);
+});
+}
+render(){
+   this.saveNotes() ;
+   this.displayNotes();
+}
     editNote(id,{title,text}){
 this.notes=this.notes.map((note) => {
 if(note.id==id){
