@@ -93,8 +93,8 @@ color: #5f6368;
 }
 .p2{
     position: relative;
-   width:130px ;
-    right: 80px; 
+   width:170px ;
+    right: 112px; 
     display: flex;
     align-items: center; 
     padding:0px 50px 0px 0px;
@@ -104,7 +104,7 @@ color: #5f6368;
 .auth-user{
 
     cursor: pointer;
-    display:inline-block;
+    text-align: center
     ;
 }
 .logout{
