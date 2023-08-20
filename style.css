@@ -94,12 +94,12 @@ color: #5f6368;
 .p2{
     position: relative;
    width:150px ;
-    right: 120px; 
+    right: 150px; 
     display: flex;
     align-items: center; 
     padding:0px 50px 0px 0px;
     margin-right: 50px;
-   
+   background: paleturquoise;
 }
 .auth-user{
 
